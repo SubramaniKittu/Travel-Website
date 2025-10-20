@@ -217,19 +217,22 @@ nav ul li a:hover {
 .upcoming-image-carousel {
     width: 100%;
     overflow: hidden;
-    white-space: nowrap; /* Keep images in a single line */
     position: relative;
     margin-bottom: 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.carousel-track {
+    display: flex;
+    /* 12 cards * 33.33% width = 400% total width */
+    width: 400%; 
+    animation: scrollImages 40s linear infinite;
 }
 
 .upcoming-tour-card {
     position: relative;
-    display: inline-block; /* Arrange cards horizontally */
-    width: 33.33%; /* Show 3 images at a time */
+    /* Each card is 1/12th of the track's width */
+    width: calc(100% / 12);
     height: 300px; /* Fixed height for consistency */
-    animation: scrollImages 25s linear infinite; /* Faster scrolling animation */
     overflow: hidden;
     border-radius: 10px; /* Card shape */
     margin: 0 5px; /* Spacing between cards */
@@ -262,11 +265,11 @@ nav ul li a:hover {
 
 @keyframes scrollImages {
     0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); } /* Scroll half the total width of duplicated images */
+    100% { transform: translateX(-50%); } /* Scroll half the track's width (the 6 unique cards) */
 }
 
 /* Pause animation on hover */
-.upcoming-image-carousel:hover .upcoming-tour-card {
+.upcoming-image-carousel:hover .carousel-track {
     animation-play-state: paused;
 }
 
@@ -451,11 +454,11 @@ footer p {
 
     /* Responsive adjustments for carousel */
     .upcoming-tour-card {
-        width: 50%; /* Show 2 images at a time */
+        /* On tablet, each card is 1/12th of the new track width */
+        width: calc(100% / 12);
     }
-    @keyframes scrollImages {
-        0% { transform: translateX(0%); }
-        100% { transform: translateX(-50%); } /* Scroll half the total width of duplicated images */
+    .carousel-track {
+        width: 600%; /* 12 cards * 50% = 600% */
     }
     .timer-unit span {
         font-size: 2rem;
@@ -474,6 +477,6 @@ footer p {
         }
         @keyframes scrollImages {
             0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); } /* Scroll half the total width of duplicated images */
+            100% { transform: translateX(-100%); } /* Scroll the full width of the unique images */
         }
     }
