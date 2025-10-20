@@ -116,7 +116,91 @@
             </div>
         </div>
     </section>
-    
+
+    <section id="upcoming-tour" class="section bg-dark-section">
+        <div class="container">
+            <h2>Upcoming Christmas Adventure!</h2>
+            <p class="tour-subtitle">Join us for a magical winter journey to Finland & Sweden, departing this Christmas!</p>
+            
+            <div id="countdown-timer">
+                <div class="timer-unit">
+                    <span id="days">00</span>
+                    <label>Days</label>
+                </div>
+                <div class="timer-unit">
+                    <span id="hours">00</span>
+                    <label>Hours</label>
+                </div>
+                <div class="timer-unit">
+                    <span id="minutes">00</span>
+                    <label>Minutes</label>
+                </div>
+                <div class="timer-unit">
+                    <span id="seconds">00</span>
+                    <label>Seconds</label>
+                </div>
+            </div>
+
+            <div class="upcoming-image-carousel">
+                <div class="carousel-track">
+                    <div class="upcoming-tour-card">
+                        <img src="images/finland_aurora.jpg" alt="Northern Lights in Finland">
+                        <div class="card-overlay">
+                            <h4>Northern Lights, Finland</h4>
+                            <p>Witness the magical Aurora Borealis dance across the arctic sky.</p>
+                        </div>
+                    </div>
+                    <div class="upcoming-tour-card">
+                        <img src="images/sweden_aurora.jpg" alt="Northern Lights in Sweden">
+                        <div class="card-overlay">
+                            <h4>Aurora Over Sweden</h4>
+                            <p>Experience the stunning aurora reflecting over serene Swedish lakes.</p>
+                        </div>
+                    </div>
+                    <div class="upcoming-tour-card">
+                        <img src="images/finland_mountains.jpg" alt="Snowy mountains in Finland">
+                        <div class="card-overlay">
+                            <h4>Finnish Mountainscape</h4>
+                            <p>Explore the pristine, snow-covered mountains of Lapland.</p>
+                        </div>
+                    </div>
+                    <div class="upcoming-tour-card">
+                        <img src="images/sweden_icehotel.jpg" alt="Icehotel in Sweden">
+                        <div class="card-overlay">
+                            <h4>The ICEHOTEL, Sweden</h4>
+                            <p>A unique stay in a hotel sculpted entirely from ice and snow.</p>
+                        </div>
+                    </div>
+                    <div class="upcoming-tour-card">
+                        <img src="images/finland_reindeer.jpg" alt="Reindeer in Finland">
+                        <div class="card-overlay">
+                            <h4>Reindeer Sledding</h4>
+                            <p>Embark on a traditional reindeer sleigh ride through a winter wonderland.</p>
+                        </div>
+                    </div>
+                    <div class="upcoming-tour-card">
+                        <img src="images/sweden_city_winter.jpg" alt="Stockholm in winter">
+                        <div class="card-overlay">
+                            <h4>Winter in Stockholm</h4>
+                            <p>Discover the charm of Sweden's capital, adorned in winter snow.</p>
+                        </div>
+                    </div>
+                    <!-- Duplicate images for seamless loop -->
+                    <div class="upcoming-tour-card">
+                        <img src="images/finland_aurora.jpg" alt="Northern Lights in Finland">
+                        <div class="card-overlay"><h4>Northern Lights, Finland</h4><p>Witness the magical Aurora Borealis dance across the arctic sky.</p></div>
+                    </div>
+                    <div class="upcoming-tour-card"><img src="images/sweden_aurora.jpg" alt="Northern Lights in Sweden"><div class="card-overlay"><h4>Aurora Over Sweden</h4><p>Experience the stunning aurora reflecting over serene Swedish lakes.</p></div></div>
+                    <div class="upcoming-tour-card"><img src="images/finland_mountains.jpg" alt="Snowy mountains in Finland"><div class="card-overlay"><h4>Finnish Mountainscape</h4><p>Explore the pristine, snow-covered mountains of Lapland.</p></div></div>
+                    <div class="upcoming-tour-card"><img src="images/sweden_icehotel.jpg" alt="Icehotel in Sweden"><div class="card-overlay"><h4>The ICEHOTEL, Sweden</h4><p>A unique stay in a hotel sculpted entirely from ice and snow.</p></div></div>
+                    <div class="upcoming-tour-card"><img src="images/finland_reindeer.jpg" alt="Reindeer in Finland"><div class="card-overlay"><h4>Reindeer Sledding</h4><p>Embark on a traditional reindeer sleigh ride through a winter wonderland.</p></div></div>
+                    <div class="upcoming-tour-card"><img src="images/sweden_city_winter.jpg" alt="Stockholm in winter"><div class="card-overlay"><h4>Winter in Stockholm</h4><p>Discover the charm of Sweden's capital, adorned in winter snow.</p></div></div>
+                </div>
+            </div>
+            <a href="#contact" class="btn btn-center">Book This Tour</a>
+        </div>
+    </section>
+
     <section id="testimonials" class="section bg-dark-section">
         <div class="container">
             <h2>What Our Adventurers Say</h2>
@@ -147,7 +231,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Travelogue. All Rights Reserved.</p>
+            <p>&copy; 2025 Travelogue. All Rights Reserved.</p>
             <div class="social-links">
                 <!-- Using font awesome for icons would be a good next step! -->
                 <a href="#">Facebook</a>
@@ -157,5 +241,37 @@
         </div>
     </footer>
 
+    <script>
+        // Set the date we're counting down to
+        const countDownDate = new Date(new Date().getFullYear(), 11, 25).getTime(); // December 25 of the current year
+
+        // Update the count down every 1 second
+        const x = setInterval(function() {
+
+            // Get today's date and time
+            const now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            const distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the elements
+            document.getElementById("days").textContent = String(days).padStart(2, '0');
+            document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+            document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown-timer").innerHTML = "<h4>The Adventure Has Begun!</h4>";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
