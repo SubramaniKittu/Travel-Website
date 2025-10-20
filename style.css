@@ -124,6 +124,45 @@ nav ul li a:hover {
     font-size: 2.5rem;
 }
 
+.bg-light-section {
+    background: #f9f9f9;
+}
+
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.facility-item {
+    padding: 20px;
+}
+
+.facility-item .material-symbols-outlined {
+    font-size: 48px; /* Icon size */
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    /* For a nice visual effect */
+    background: #e0e0e0;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    line-height: 80px; /* Vertically center icon */
+    display: inline-block;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.facility-item:hover .material-symbols-outlined {
+    background: var(--primary-color);
+    color: var(--text-light);
+}
+
+.facility-item h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+}
+
 #destinations {
     background: #f9f9f9;
 }
