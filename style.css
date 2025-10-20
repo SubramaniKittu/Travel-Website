@@ -161,6 +161,13 @@ nav ul li a:hover {
     margin-bottom: 10px;
 }
 
+.flight-info {
+    margin-top: 15px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
 .bg-dark-section {
     background: var(--bg-dark);
     color: var(--text-light);
