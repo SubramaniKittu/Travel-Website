@@ -220,11 +220,13 @@
     <section id="contact" class="section">
         <div class="container">
             <h2>Plan Your Next Adventure</h2>
-            <form id="contact-form" action="#" method="POST">
+            <!-- IMPORTANT: The 'action' attribute should point to a secure server-side script (e.g., PHP, Node.js) 
+                 that validates and sanitizes input to prevent SQL injection and other server-side attacks. -->
+            <form id="contact-form" action="your-server-side-script.php" method="POST">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
                 <textarea name="message" rows="5" placeholder="Tell us where you want to go..." required></textarea>
-                <button type="submit" class="btn">Send Message</button>
+                <button type="submit" class="btn" id="submit-btn">Send Message</button>
             </form>
         </div>
     </section>
@@ -272,6 +274,48 @@
                 document.getElementById("countdown-timer").innerHTML = "<h4>The Adventure Has Begun!</h4>";
             }
         }, 1000);
+
+        // --- Security Enhancements & Form Validation ---
+
+        const contactForm = document.getElementById('contact-form');
+
+        contactForm.addEventListener('submit', function(event) {
+            // Get form fields
+            const nameInput = contactForm.querySelector('input[name="name"]');
+            const emailInput = contactForm.querySelector('input[name="email"]');
+            const messageInput = contactForm.querySelector('textarea[name="message"]');
+
+            // 1. Validate Name: only allow letters and spaces
+            const nameRegex = /^[a-zA-Z\s]+$/;
+            if (!nameRegex.test(nameInput.value)) {
+                alert('Please enter a valid name (letters and spaces only).');
+                event.preventDefault(); // Stop form submission
+                return;
+            }
+
+            // 2. Validate Email: basic check for invalid characters. The browser's type="email" handles format.
+            // This regex checks for characters that are generally not allowed in email addresses.
+            const emailInvalidCharsRegex = /[<>"'()\[\]\\;:,]/;
+            if (emailInvalidCharsRegex.test(emailInput.value)) {
+                alert('Please enter a valid email address without special characters like < > ( ) [ ] ; : ,');
+                event.preventDefault(); // Stop form submission
+                return;
+            }
+
+            // 3. Sanitize inputs to prevent XSS before sending to the server
+            // This is a good practice, but server-side sanitization is still essential.
+            const sanitize = (str) => {
+                return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            };
+
+            // Sanitize the values
+            nameInput.value = sanitize(nameInput.value);
+            emailInput.value = sanitize(emailInput.value);
+            messageInput.value = sanitize(messageInput.value);
+
+            // The form will now submit with sanitized values.
+            // Ensure your server-side script is prepared to handle these HTML entities.
+        });
     </script>
 </body>
 </html>
